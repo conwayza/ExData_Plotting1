@@ -11,7 +11,7 @@ subMetering1 <- as.numeric(data$Sub_metering_1)
 subMetering2 <- as.numeric(data$Sub_metering_2)
 subMetering3 <- as.numeric(data$Sub_metering_3)
 
-dev.copy(png, file="plot2.png", height=480, width=480)
+dev.copy(png, file="plot3.png", height=480, width=480)
 plot(dateTime, subMetering1,  type="l", ylab="Energy Submetering", xlab="")
 lines(dateTime, subMetering2,  type="l", col="Red")
 lines(dateTime, subMetering3,  type="l", col="Blue")
