@@ -5,12 +5,14 @@ data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec="
 #subsetting data
 subsetData <- subset(data, subset=(Date >= "2007-02-01" & Date <= "2007-02-02"))  
 
-dateTime <- strptime(paste(subsetData$Date, subsetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+dateTime <- strptime(paste(subsetData$Date, subsetData$Time), "%d/%m/%Y %H:%M:%S")
+dateTime <- as.POSIXct(dateTime)
 globalActivePower <- as.numeric(subsetData$Global_active_power)
 subMetering1 <- as.numeric(subsetData$Sub_metering_1)
 subMetering2 <- as.numeric(subsetData$Sub_metering_2)
 subMetering3 <- as.numeric(subsetData$Sub_metering_3)
 
+attach(data)
 dev.copy(png, file="plot3.png", height=480, width=480)
 plot(dateTime, subMetering1,  type="l", ylab="Energy Submetering", xlab="")
 lines(dateTime, subMetering2,  type="l", col="Red")
