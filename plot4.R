@@ -26,3 +26,8 @@ plot(dateTime, Global_reactive_power, type="l")
 
 dev.off()
 detach(data)
+
+#For whomever is reviewing, I could not get the last 3 graphs to work due to the following error: 
+#Error in plot.window(...) : need finite 'xlim' values
+#In addition: Warning messages:
+#The file's syntax made sense to me, however, I could not figure out how to get the 'xlim' value error to clear
