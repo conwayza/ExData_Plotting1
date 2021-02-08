@@ -1,13 +1,11 @@
-#getting data
+##Collecting the information from the text file and creating a subset for it
 dataFile <- "./household_power_consumption.txt"
-data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".") 
+data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+subsetDataFile <- data[data$Date %in% c("1/2/2007", "2/2/2007") ,]
 
-#subsetting data
-subsetData <- subset(data, subset=(Date >= "2007-02-01" & Date <= "2007-02-02"))  
-
-dateTime <- strptime(paste(subsetData$Date, subsetData$Time), "%d/%m/%Y %H:%M:%S")
-dateTime <- as.POSIXct(dateTime)
-globalActivePower <- as.numeric(subsetData$Global_active_power)
+##Creating variables to construct the desired plot
+dateTime <- strptime(paste(subsetDataFile$Date, subsetDataFile$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+globalActivePower <- as.numeric(subsetDataFile$Global_active_power)
 subMetering1 <- as.numeric(subsetData$Sub_metering_1)
 subMetering2 <- as.numeric(subsetData$Sub_metering_2)
 subMetering3 <- as.numeric(subsetData$Sub_metering_3)
