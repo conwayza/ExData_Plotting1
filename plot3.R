@@ -6,9 +6,9 @@ subsetDataFile <- data[data$Date %in% c("1/2/2007", "2/2/2007") ,]
 ##Creating variables to construct the desired plot
 dateTime <- strptime(paste(subsetDataFile$Date, subsetDataFile$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
 globalActivePower <- as.numeric(subsetDataFile$Global_active_power)
-subMetering1 <- as.numeric(subsetData$Sub_metering_1)
-subMetering2 <- as.numeric(subsetData$Sub_metering_2)
-subMetering3 <- as.numeric(subsetData$Sub_metering_3)
+subMetering1 <- as.numeric(subsetDataFile$Sub_metering_1)
+subMetering2 <- as.numeric(subsetDataFile$Sub_metering_2)
+subMetering3 <- as.numeric(subsetDataFile$Sub_metering_3)
 
 attach(data)
 dev.copy(png, file="plot3.png", height=480, width=480)
